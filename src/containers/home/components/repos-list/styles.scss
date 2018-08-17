@@ -1,0 +1,17 @@
+@import '../../../../styles/settings/colors';
+
+.list {
+  width: 100%;
+}
+
+.item {
+  margin-top: 20px;
+  border: 1px solid $color-divider;
+  border-radius: 4px;
+  padding: 15px 20px;
+  width: 100%;
+  text-align: left;
+  letter-spacing: 1px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
