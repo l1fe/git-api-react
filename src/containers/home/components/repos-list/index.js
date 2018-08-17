@@ -11,9 +11,9 @@ const ReposList = ({ loading, error, items, onBookmarkToggle }) => (
     { error && <div className={styles.error}>Got an error</div> }
     { !error && !items.length && <div className={styles.empty}>No items found</div> }
     { items.length > 0 && <div className={styles.info}>{ `${items.length} items found `}</div>}
-    {items.map(({ id, name, description, url, bookmarked }) => (
+    {items.map(({ id, name, description, html_url: htmlUrl, bookmarked }) => (
       <div key={id} className={styles.item}>
-        <a className={styles.nameLink} href={url} target="_blank">
+        <a className={styles.nameLink} href={htmlUrl} target="_blank">
           { name }
         </a>
         <div className={styles.description}>
@@ -38,7 +38,7 @@ ReposList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
     description: PropTypes.string,
-    url: PropTypes.string,
+    html_url: PropTypes.string,
     bookmarked: PropTypes.bool,
   })),
   onBookmarkToggle: PropTypes.func.isRequired,

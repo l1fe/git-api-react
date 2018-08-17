@@ -11,13 +11,7 @@ class Home extends PureComponent {
   static propTypes = {
     loading: PropTypes.bool,
     error: PropTypes.bool,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      url: PropTypes.string,
-      bookmarked: PropTypes.bool,
-    })).isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     fetchRepos: PropTypes.func.isRequired,
     updateRepo: PropTypes.func.isRequired,
   }
