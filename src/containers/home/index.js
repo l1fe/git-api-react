@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { repoActions } from 'redux/actions';
-import { Input } from 'components';
 
-import { ReposList } from './components';
+import { ReposList, Form } from './components';
 import styles from './styles.scss';
 
 /* eslint-disable no-console */
@@ -14,10 +13,8 @@ const Home = ({ loading, error, items, fetchRepos }) => (
     <h1 className={styles.title}>Git API React</h1>
 
     <div className={styles.content}>
-      <Input
-        type="text"
-        placeholder="Start typing..."
-        onChange={(e) => fetchRepos({ name: e.target.value })}
+      <Form
+        onChange={({ name, bookmarked }) => fetchRepos({ name, bookmarked })}
       />
 
       <ReposList
