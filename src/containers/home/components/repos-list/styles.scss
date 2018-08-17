@@ -56,15 +56,18 @@
 .status {
   text-align: center;
   letter-spacing: 1px;
+  color: $color-divider;
   font-size: 16px;
 }
 
 .empty {
   composes: status;
-  color: $color-divider;
 }
 
 .info {
   composes: status;
-  color: $color-divider;
+}
+
+.error {
+  composes: status;
 }

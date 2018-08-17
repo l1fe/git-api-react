@@ -8,8 +8,8 @@ import styles from './styles.scss';
 
 const ReposList = ({ loading, error, items, onBookmarkToggle }) => (
   <div className={[styles.list, loading && styles.listLoading].join(' ')}>
-    { error && <div className={styles.error}>Error</div> }
-    { !items.length && <div className={styles.empty}>No items found</div> }
+    { error && <div className={styles.error}>Got an error</div> }
+    { !error && !items.length && <div className={styles.empty}>No items found</div> }
     { items.length > 0 && <div className={styles.info}>{ `${items.length} items found `}</div>}
     {items.map(({ id, name, bookmarked, stars }) => (
       <div key={id} className={styles.item}>
