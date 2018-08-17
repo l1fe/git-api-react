@@ -8,7 +8,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "eslint": "npx eslint src",
     "scss-lint": "scss-lint",
-    "lint": "npm run eslint && npm run scss-lint"
+    "lint": "npm run eslint && npm run scss-lint",
+    "commit": "commit-wizard"
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -93,5 +94,20 @@
       "node",
       "mjs"
     ]
+  },
+  "release": {
+    "analyzeCommits": "simple-commit-message"
+  },
+  "config": {
+    "pre-git": {
+      "pre-commit": ["npm run lint"],
+      "pre-push": [],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
+  },
+  "devDependencies": {
+    "pre-git": "^3.17.1"
   }
 }
