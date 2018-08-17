@@ -11,9 +11,14 @@ const ReposList = ({ loading, error, items, onBookmarkToggle }) => (
     { error && <div className={styles.error}>Got an error</div> }
     { !error && !items.length && <div className={styles.empty}>No items found</div> }
     { items.length > 0 && <div className={styles.info}>{ `${items.length} items found `}</div>}
-    {items.map(({ id, name, bookmarked, stars }) => (
+    {items.map(({ id, name, description, url, bookmarked }) => (
       <div key={id} className={styles.item}>
-        { name }
+        <a className={styles.nameLink} href={url} target="_blank">
+          { name }
+        </a>
+        <div className={styles.description}>
+          { description }
+        </div>
         { bookmarked && <div className={styles.bookmark} /> }
         <button onClick={() => onBookmarkToggle(id, !bookmarked)} className={styles.bookmarkBtn}>
           <img
@@ -21,7 +26,6 @@ const ReposList = ({ loading, error, items, onBookmarkToggle }) => (
             className={styles.bookmarkBtnIcon}
           />
         </button>
-        <div className={styles.itemStars}>{ `${stars || 0} stars ` }</div>
       </div>
     ))}
   </div>
@@ -32,9 +36,10 @@ ReposList.propTypes = {
   error: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    bookmarked: PropTypes.bool.isRequired,
-    stars: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
+    bookmarked: PropTypes.bool,
   })),
   onBookmarkToggle: PropTypes.func.isRequired,
 };

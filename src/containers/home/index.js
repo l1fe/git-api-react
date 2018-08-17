@@ -32,9 +32,10 @@ Home.propTypes = {
   error: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    bookmarked: PropTypes.bool.isRequired,
-    stars: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
+    bookmarked: PropTypes.bool,
   })).isRequired,
   fetchRepos: PropTypes.func.isRequired,
   updateRepo: PropTypes.func.isRequired,

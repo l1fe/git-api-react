@@ -18,7 +18,7 @@
   margin-top: 20px;
   border: 1px solid $color-divider;
   border-radius: 4px;
-  padding: 15px 20px;
+  padding: 15px 60px 15px 20px;
   width: 100%;
   text-align: left;
   letter-spacing: 1px;
@@ -29,9 +29,8 @@
 .bookmarkBtn {
   display: flex;
   position: absolute;
-  top: 50%;
+  top: 10px;
   right: 10px;
-  transform: translate(0, -50%);
   transition: .4s;
   outline: 0;
   border: 0;
@@ -70,4 +69,12 @@
 
 .error {
   composes: status;
+}
+
+.nameLink {
+  font-size: 18px;
+}
+
+.description {
+  margin-top: 10px;
 }
