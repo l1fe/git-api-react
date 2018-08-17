@@ -1,6 +1,5 @@
-// import someReducer from ./some-reducer;
+import repoReducer from './repo';
 
 export default {
-  customReducer: (state = null) => state,
-  // someReducer,
+  repo: repoReducer,
 };
