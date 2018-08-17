@@ -34,3 +34,24 @@ export const fetchRepos = (params = { }) => (dispatch) => {
 
   return debouncedApiCall(params, dispatch);
 };
+
+export const updateRepoRequest = () => ({
+  type: repo.UPDATE_REPO_REQUEST,
+});
+
+export const updateRepoSuccess = (values) => ({
+  type: repo.UPDATE_REPO_SUCCESS,
+  payload: values,
+});
+
+export const updateRepoFail = () => ({
+  type: repo.UPDATE_REPO_FAIL,
+});
+
+export const updateRepo = (id, values) => (dispatch) => {
+  dispatch(updateRepoRequest());
+
+  return axios.patch(`${API_URL}/repos/${id}`, values)
+    .then(resp => dispatch(updateRepoSuccess(resp.data)))
+    .catch((err) => dispatch(updateRepoFail(err)));
+}

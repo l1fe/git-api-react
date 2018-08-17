@@ -8,7 +8,7 @@ import { ReposList, Form } from './components';
 import styles from './styles.scss';
 
 /* eslint-disable no-console */
-const Home = ({ loading, error, items, fetchRepos }) => (
+const Home = ({ loading, error, items, fetchRepos, updateRepo }) => (
   <div className={styles.container}>
     <h1 className={styles.title}>Git API React</h1>
 
@@ -21,7 +21,7 @@ const Home = ({ loading, error, items, fetchRepos }) => (
         loading={loading}
         error={error}
         items={items}
-        onBookmarkToggle={() => {}}
+        onBookmarkToggle={(id, bookmarked) => updateRepo(id, { bookmarked })}
       />
     </div>
   </div>
@@ -37,6 +37,7 @@ Home.propTypes = {
     stars: PropTypes.number.isRequired,
   })).isRequired,
   fetchRepos: PropTypes.func.isRequired,
+  updateRepo: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -44,6 +45,9 @@ const mapStateToProps = (state) => ({
   error: state.repo.error,
   items: state.repo.items,
 });
-const mapDispatchToProps = ({ fetchRepos: repoActions.fetchRepos });
+const mapDispatchToProps = ({
+  fetchRepos: repoActions.fetchRepos,
+  updateRepo: repoActions.updateRepo,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
