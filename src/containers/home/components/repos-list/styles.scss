@@ -1,10 +1,15 @@
 @import '../../../../styles/settings/colors';
 
 .list {
+  display: block;
+  margin-top: 20px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .item {
+  display: block;
+  position: relative;
   margin-top: 20px;
   border: 1px solid $color-divider;
   border-radius: 4px;
@@ -14,4 +19,42 @@
   letter-spacing: 1px;
   font-size: 14px;
   box-sizing: border-box;
+}
+
+.bookmarkBtn {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
+  transition: .4s;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.bookmarkBtnIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.status {
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.empty {
+  composes: status;
+  color: $color-divider;
 }

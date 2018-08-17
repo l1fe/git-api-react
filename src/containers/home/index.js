@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { repoActions } from 'redux/actions';
-import { Button, Input } from 'components';
+import { Input } from 'components';
 
 import { ReposList } from './components';
 import styles from './styles.scss';
@@ -12,24 +12,21 @@ import styles from './styles.scss';
 const Home = ({ loading, error, items, fetchRepos }) => (
   <div className={styles.container}>
     <h1 className={styles.title}>Git API React</h1>
-    <Button
-      primary
-      onPress={() => fetchRepos()} title="Fetch Repos"
-      className={styles.btn}
-    />
 
-    <Input
-      type="text"
-      placeholder="Start typing..."
-      onChange={(e) => fetchRepos({ name: e.target.value })}
-    />
+    <div className={styles.content}>
+      <Input
+        type="text"
+        placeholder="Start typing..."
+        onChange={(e) => fetchRepos({ name: e.target.value })}
+      />
 
-    <ReposList
-      loading={loading}
-      error={error}
-      items={items}
-      onBookmarkToggle={() => {}}
-    />
+      <ReposList
+        loading={loading}
+        error={error}
+        items={items}
+        onBookmarkToggle={() => {}}
+      />
+    </div>
   </div>
 );
 
@@ -40,6 +37,7 @@ Home.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     bookmarked: PropTypes.bool.isRequired,
+    stars: PropTypes.number.isRequired,
   })).isRequired,
   fetchRepos: PropTypes.func.isRequired,
 }
