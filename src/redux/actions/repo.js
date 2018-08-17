@@ -1,6 +1,7 @@
 import axios from 'axios';
+import debounce from 'lodash/debounce';
 
-import { API_URL } from 'config';
+import { API_URL, DEBOUNCE_API_WAIT_MS } from 'config';
 
 import { repo } from '../types';
 
@@ -17,12 +18,19 @@ export const fetchReposFail = () => ({
   type: repo.FETCH_REPOS_FAIL,
 });
 
-export const fetchRepos = () => (dispatch) => {
+const debouncedApiCall = debounce((params, dispatch) => {
+  axios.get(`${API_URL}/repos`, { params })
+    .then(resp => dispatch(fetchReposSuccess(resp.data)))
+    .catch(() => dispatch(fetchReposFail()));
+}, DEBOUNCE_API_WAIT_MS, { leading: true });
+
+export const fetchRepos = (params = { }) => (dispatch) => {
   dispatch(fetchReposRequest());
 
-  return axios.get(`${API_URL}/repos`)
-    .then((resp) => {
-      dispatch(fetchReposSuccess(resp.data));
-    })
-    .catch(() => dispatch(fetchReposFail()));
-}
+  // remove name for empty value
+  if (!params.name) {
+    delete params.name;
+  }
+
+  return debouncedApiCall(params, dispatch);
+};

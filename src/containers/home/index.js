@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { repoActions } from 'redux/actions';
-import { Button } from 'components';
+import { Button, Input } from 'components';
 
 import { ReposList } from './components';
 import styles from './styles.scss';
 
+/* eslint-disable no-console */
 const Home = ({ loading, error, items, fetchRepos }) => (
   <div className={styles.container}>
     <h1 className={styles.title}>Git API React</h1>
@@ -15,6 +16,12 @@ const Home = ({ loading, error, items, fetchRepos }) => (
       primary
       onPress={() => fetchRepos()} title="Fetch Repos"
       className={styles.btn}
+    />
+
+    <Input
+      type="text"
+      placeholder="Start typing..."
+      onChange={(e) => fetchRepos({ name: e.target.value })}
     />
 
     <ReposList
