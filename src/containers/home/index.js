@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { repoActions } from 'redux/actions';
+import { Button } from 'components';
 
 import { ReposList } from './components';
 import styles from './styles.scss';
@@ -9,9 +11,11 @@ import styles from './styles.scss';
 const Home = ({ loading, error, items, fetchRepos }) => (
   <div className={styles.container}>
     <h1 className={styles.title}>Git API React</h1>
-    <button onClick={() => fetchRepos()}>
-      Fetch repos
-    </button>
+    <Button
+      primary
+      onPress={() => fetchRepos()} title="Fetch Repos"
+      className={styles.btn}
+    />
 
     <ReposList
       loading={loading}
