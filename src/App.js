@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Home from './containers/home';
+
 import './styles/base.scss';
 
 const App = () => (
   <div>
-    <h1>App</h1>
+    <Home />
   </div>
 );
 
