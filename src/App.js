@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Home from './containers/home';
+import { Home } from 'containers';
 
 import './styles/base.scss';
 
