@@ -7,10 +7,10 @@ import BookmarkRedIconSrc from 'assets/svg/bookmark-red.svg';
 import styles from './styles.scss';
 
 const ReposList = ({ loading, error, items, onBookmarkToggle }) => (
-  <div className={styles.list}>
-    { loading && <div className={styles.loading}>Loading</div> }
+  <div className={[styles.list, loading && styles.listLoading].join(' ')}>
     { error && <div className={styles.error}>Error</div> }
     { !items.length && <div className={styles.empty}>No items found</div> }
+    { items.length > 0 && <div className={styles.info}>{ `${items.length} items found `}</div>}
     {items.map(({ id, name, bookmarked, stars }) => (
       <div key={id} className={styles.item}>
         { name }

@@ -22,7 +22,7 @@ const debouncedApiCall = debounce((params, dispatch) => {
   axios.get(`${API_URL}/repos`, { params })
     .then(resp => dispatch(fetchReposSuccess(resp.data)))
     .catch(() => dispatch(fetchReposFail()));
-}, DEBOUNCE_API_WAIT_MS, { leading: true });
+}, DEBOUNCE_API_WAIT_MS, { leading: false });
 
 export const fetchRepos = (params = { }) => (dispatch) => {
   dispatch(fetchReposRequest());

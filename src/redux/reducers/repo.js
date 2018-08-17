@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
   if (action.type === repo.FETCH_REPOS_REQUEST) {
     return {
       ...state,
-      loading: false,
+      loading: true,
       error: false,
     };
   }

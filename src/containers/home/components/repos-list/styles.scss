@@ -2,9 +2,14 @@
 
 .list {
   display: block;
+  transition: .4s;
   margin-top: 20px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.listLoading {
+  filter: blur(3px);
 }
 
 .item {
@@ -55,6 +60,11 @@
 }
 
 .empty {
+  composes: status;
+  color: $color-divider;
+}
+
+.info {
   composes: status;
   color: $color-divider;
 }
